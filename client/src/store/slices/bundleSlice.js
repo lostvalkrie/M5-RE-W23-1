@@ -1,25 +1,25 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit'
 
-const BUNDLE_SLICE_NAME = 'bundle';
+const BUNDLE_SLICE_NAME = 'bundle'
 
 const initialState = {
-  bundle: null,
-};
+  bundle: null
+}
 
 const reducers = {
   updateBundle: (state, { payload }) => {
-    state.bundle = payload;
-  },
-};
+    state.bundle = payload
+  }
+}
 
 const bundleSlice = createSlice({
   name: `${BUNDLE_SLICE_NAME}`,
   initialState,
-  reducers,
-});
+  reducers
+})
 
-const { actions, reducer } = bundleSlice;
+const { actions, reducer } = bundleSlice
 
-export const { updateBundle } = actions;
+export const { updateBundle } = actions
 
-export default reducer;
+export default reducer

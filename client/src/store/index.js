@@ -1,11 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './reducer';
-import { initSocket } from '../api/ws/socketController';
+import { configureStore } from '@reduxjs/toolkit'
+import rootReducer from './reducer'
+import { initSocket } from '../api/ws/socketController'
 
 const store = configureStore({
-  reducer: rootReducer,
-});
+  reducer: rootReducer
+})
 
-initSocket(store);
+initSocket(store)
 
-export default store;
+export default store

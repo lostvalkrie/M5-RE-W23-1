@@ -1,4 +1,4 @@
-import styles from './AtomComponent.module.sass';
+import styles from './AtomComponent.module.sass'
 
 const AtomComponent = () => {
   return (
@@ -17,7 +17,7 @@ const AtomComponent = () => {
           <li className={styles.atomListItem}>
             <i
               className={`far fa-handshake ${styles.atomIcon}`}
-              aria-hidden="true"
+              aria-hidden='true'
             ></i>
             <div className={styles.atomListDiv}>
               <h3 className={styles.atomListH3}>Consultant Led</h3>
@@ -30,7 +30,7 @@ const AtomComponent = () => {
           <li className={styles.atomListItem}>
             <i
               className={`fas fa-users ${styles.atomIcon}`}
-              aria-hidden="true"
+              aria-hidden='true'
             ></i>
             <div className={styles.atomListDiv}>
               <h3 className={styles.atomListH3}>Crowd Powered</h3>
@@ -44,7 +44,7 @@ const AtomComponent = () => {
           <li className={styles.atomListItem}>
             <i
               className={`fas fa-chart-pie ${styles.atomIcon}`}
-              aria-hidden="true"
+              aria-hidden='true'
             ></i>
             <div className={styles.atomListDiv}>
               <h3 className={styles.atomListH3}>Trademark Reports</h3>
@@ -57,7 +57,7 @@ const AtomComponent = () => {
           <li className={styles.atomListItem}>
             <i
               className={`fas fa-bullhorn ${styles.atomIcon}`}
-              aria-hidden="true"
+              aria-hidden='true'
             ></i>
             <div className={styles.atomListDiv}>
               <h3 className={styles.atomListH3}>Audience Testing</h3>
@@ -70,12 +70,12 @@ const AtomComponent = () => {
         </ul>
       </div>
       <div>
-        <a href="#" className={styles.atomLearnMore}>
+        <a href='#' className={styles.atomLearnMore}>
           Learn More
         </a>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default AtomComponent;
+export default AtomComponent

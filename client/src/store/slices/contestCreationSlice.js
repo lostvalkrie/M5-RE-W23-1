@@ -1,29 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit'
 
-const CONTEST_SAVING_SLICE_NAME = 'contestCreation';
+const CONTEST_SAVING_SLICE_NAME = 'contestCreation'
 
 const initialState = {
-  contests: {},
-};
+  contests: {}
+}
 
 const reducers = {
   saveContestToStore: (state, { payload: { type, info } }) => {
     state.contests = {
       ...state.contests,
-      ...{ [type]: info },
-    };
+      ...{ [type]: info }
+    }
   },
-  clearContestStore: () => initialState,
-};
+  clearContestStore: () => initialState
+}
 
 const contestSavingSlice = createSlice({
   name: CONTEST_SAVING_SLICE_NAME,
   initialState,
-  reducers,
-});
+  reducers
+})
 
-const { actions, reducer } = contestSavingSlice;
+const { actions, reducer } = contestSavingSlice
 
-export const { saveContestToStore, clearContestStore } = actions;
+export const { saveContestToStore, clearContestStore } = actions
 
-export default reducer;
+export default reducer

@@ -1,9 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
-import * as restController from '../../api/rest/restController';
-import CONSTANTS from '../../constants';
-import { decorateAsyncThunk, pendingReducer } from '../../utils/store';
+import { createSlice } from '@reduxjs/toolkit'
+import * as restController from '../../api/rest/restController'
+import CONSTANTS from '../../constants'
+import { decorateAsyncThunk, pendingReducer } from '../../utils/store'
 
-const CONTESTS_SLICE_NAME = 'contests';
+const CONTESTS_SLICE_NAME = 'contests'
 
 const initialState = {
   isFetching: true,
@@ -15,10 +15,10 @@ const initialState = {
     contestId: '',
     industry: '',
     awardSort: 'asc',
-    ownEntries: false,
+    ownEntries: false
   },
-  haveMore: true,
-};
+  haveMore: true
+}
 
 export const getContests = decorateAsyncThunk({
   key: `${CONTESTS_SLICE_NAME}/getContests`,
@@ -26,55 +26,55 @@ export const getContests = decorateAsyncThunk({
     const { data } =
       role === CONSTANTS.CUSTOMER
         ? await restController.getCustomersContests(requestData)
-        : await restController.getActiveContests(requestData);
-    return data;
-  },
-});
+        : await restController.getActiveContests(requestData)
+    return data
+  }
+})
 
 const reducers = {
   clearContestsList: state => {
-    state.error = null;
-    state.contests = [];
+    state.error = null
+    state.contests = []
   },
   setNewCustomerFilter: (state, { payload }) => ({
     ...initialState,
     isFetching: false,
-    customerFilter: payload,
+    customerFilter: payload
   }),
   setNewCreatorFilter: (state, { payload }) => ({
     ...initialState,
     isFetching: false,
-    creatorFilter: { ...state.creatorFilter, ...payload },
-  }),
-};
+    creatorFilter: { ...state.creatorFilter, ...payload }
+  })
+}
 
 const extraReducers = builder => {
-  builder.addCase(getContests.pending, pendingReducer);
+  builder.addCase(getContests.pending, pendingReducer)
   builder.addCase(getContests.fulfilled, (state, { payload }) => {
-    state.isFetching = false;
-    state.contests = [...state.contests, ...payload.contests];
-    state.haveMore = payload.haveMore;
-  });
+    state.isFetching = false
+    state.contests = [...state.contests, ...payload.contests]
+    state.haveMore = payload.haveMore
+  })
   builder.addCase(getContests.rejected, (state, { payload }) => {
-    state.isFetching = false;
-    state.error = payload;
-    state.contests = [];
-  });
-};
+    state.isFetching = false
+    state.error = payload
+    state.contests = []
+  })
+}
 
 const contestsSlice = createSlice({
   name: CONTESTS_SLICE_NAME,
   initialState,
   reducers,
-  extraReducers,
-});
+  extraReducers
+})
 
-const { actions, reducer } = contestsSlice;
+const { actions, reducer } = contestsSlice
 
 export const {
   clearContestsList,
   setNewCustomerFilter,
-  setNewCreatorFilter,
-} = actions;
+  setNewCreatorFilter
+} = actions
 
-export default reducer;
+export default reducer

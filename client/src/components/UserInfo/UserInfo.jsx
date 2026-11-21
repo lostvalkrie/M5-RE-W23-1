@@ -1,22 +1,22 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import UpdateUserInfoForm from '../UpdateUserInfoForm/UpdateUserInfoForm';
-import { updateUser } from '../../store/slices/userSlice';
-import { changeEditModeOnUserProfile } from '../../store/slices/userProfileSlice';
-import CONSTANTS from '../../constants';
-import styles from './UserInfo.module.sass';
+import React from 'react'
+import { connect } from 'react-redux'
+import UpdateUserInfoForm from '../UpdateUserInfoForm/UpdateUserInfoForm'
+import { updateUser } from '../../store/slices/userSlice'
+import { changeEditModeOnUserProfile } from '../../store/slices/userProfileSlice'
+import CONSTANTS from '../../constants'
+import styles from './UserInfo.module.sass'
 
 const UserInfo = props => {
   const updateUserData = values => {
-    const formData = new FormData();
-    formData.append('file', values.file);
-    formData.append('firstName', values.firstName);
-    formData.append('lastName', values.lastName);
-    formData.append('displayName', values.displayName);
-    props.updateUser(formData);
-  };
+    const formData = new FormData()
+    formData.append('file', values.file)
+    formData.append('firstName', values.firstName)
+    formData.append('lastName', values.lastName)
+    formData.append('displayName', values.displayName)
+    props.updateUser(formData)
+  }
 
-  const { isEdit, changeEditMode, data } = props;
+  const { isEdit, changeEditMode, data } = props
   const {
     avatar,
     firstName,
@@ -24,8 +24,8 @@ const UserInfo = props => {
     displayName,
     email,
     role,
-    balance,
-  } = data;
+    balance
+  } = data
   return (
     <div className={styles.mainContainer}>
       {isEdit ? (
@@ -78,18 +78,18 @@ const UserInfo = props => {
         {isEdit ? 'Cancel' : 'Edit'}
       </div>
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = state => {
-  const { data } = state.userStore;
-  const { isEdit } = state.userProfile;
-  return { data, isEdit };
-};
+  const { data } = state.userStore
+  const { isEdit } = state.userProfile
+  return { data, isEdit }
+}
 
 const mapDispatchToProps = dispatch => ({
   updateUser: data => dispatch(updateUser(data)),
-  changeEditMode: data => dispatch(changeEditModeOnUserProfile(data)),
-});
+  changeEditMode: data => dispatch(changeEditModeOnUserProfile(data))
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(UserInfo)
